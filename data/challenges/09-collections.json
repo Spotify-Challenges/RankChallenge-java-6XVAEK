@@ -1,0 +1,69 @@
+{
+  "id": "09-collections",
+  "level": 5,
+  "title": "Collections Framework",
+  "category": "java",
+  "categoryLabel": "Java",
+  "points": 300,
+  "description": "Java Collections provide dynamic data structures like ArrayList and HashMap.\n\nFix the code to properly use ArrayList and HashMap with generics.",
+  "objectives": [
+    "Use generics with collections: ArrayList<String>",
+    "Use correct methods: add(), get(), put()",
+    "Iterate with enhanced for loop"
+  ],
+  "hints": [
+    "ArrayList uses add() to insert, get(index) to retrieve.",
+    "HashMap uses put(key, value) to insert, get(key) to retrieve."
+  ],
+  "hintPenalty": 35,
+  "validationType": "java-output",
+  "files": [
+    {
+      "filename": "Collections.java",
+      "language": "java",
+      "editable": true,
+      "content": "import java.util.ArrayList;\nimport java.util.HashMap;\n\npublic class Collections {\n  public static void main(String[] args) {\n    ArrayList names = new ArrayList();\n    names.insert(\"Alice\");\n    names.insert(\"Bob\");\n    names.insert(\"Charlie\");\n    \n    for (int i = 0; i < names.size(); i++) {\n      System.out.println(names[i]);\n    }\n    \n    HashMap ages = new HashMap();\n    ages.insert(\"Alice\", 25);\n    ages.insert(\"Bob\", 30);\n    \n    System.out.println(\"Alice is \" + ages.find(\"Alice\") + \" years old\");\n  }\n}"
+    }
+  ],
+  "validation": {
+    "checks": [
+      {
+        "description": "ArrayList with generics",
+        "astRule": {
+          "type": "contains-string",
+          "value": "ArrayList<String>"
+        },
+        "failMessage": "Use generics: ArrayList<String>.",
+        "points": 25
+      },
+      {
+        "description": "Use add() for ArrayList",
+        "astRule": {
+          "type": "contains-string",
+          "value": "names.add("
+        },
+        "failMessage": "Use add() method, not insert().",
+        "points": 25
+      },
+      {
+        "description": "Use get() for ArrayList",
+        "astRule": {
+          "type": "contains-string",
+          "value": "names.get(i)"
+        },
+        "failMessage": "Use get(i) method, not array notation.",
+        "points": 25
+      },
+      {
+        "description": "HashMap with generics",
+        "astRule": {
+          "type": "contains-string",
+          "value": "HashMap<String, Integer>"
+        },
+        "failMessage": "Use generics: HashMap<String, Integer>.",
+        "points": 25
+      }
+    ]
+  },
+  "unlockRequires": ["08-exceptions"]
+}

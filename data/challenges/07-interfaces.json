@@ -1,0 +1,51 @@
+{
+  "id": "07-interfaces",
+  "level": 4,
+  "title": "Interfaces",
+  "category": "java",
+  "categoryLabel": "Java",
+  "points": 250,
+  "description": "Interfaces define contracts that classes must implement.\n\nFix the interface declaration and implement it properly in the Calculator class.",
+  "objectives": [
+    "Define interface methods correctly (no body)",
+    "Use 'implements' keyword in class",
+    "Implement all interface methods"
+  ],
+  "hints": [
+    "Interface methods are implicitly public and abstract - no body, just signature.",
+    "A class uses 'implements' to adopt an interface."
+  ],
+  "hintPenalty": 30,
+  "validationType": "java-output",
+  "files": [
+    {
+      "filename": "Calculator.java",
+      "language": "java",
+      "editable": true,
+      "content": "interface MathOperations {\n  int add(int a, int b) {\n    return a + b;\n  }\n  int subtract(int a, int b);\n}\n\npublic class Calculator extends MathOperations {\n  public int add(int a, int b) {\n    return a + b;\n  }\n  \n  public int subtract(int a, int b) {\n    return a - b;\n  }\n  \n  public static void main(String[] args) {\n    Calculator calc = new Calculator();\n    System.out.println(\"5 + 3 = \" + calc.add(5, 3));\n    System.out.println(\"5 - 3 = \" + calc.subtract(5, 3));\n  }\n}"
+    }
+  ],
+  "validation": {
+    "checks": [
+      {
+        "description": "Interface method has no body",
+        "astRule": {
+          "type": "contains-string",
+          "value": "int add(int a, int b);"
+        },
+        "failMessage": "Interface methods should not have a body - end with semicolon.",
+        "points": 50
+      },
+      {
+        "description": "Class implements interface",
+        "astRule": {
+          "type": "contains-string",
+          "value": "Calculator implements MathOperations"
+        },
+        "failMessage": "Use 'implements' not 'extends' for interfaces.",
+        "points": 50
+      }
+    ]
+  },
+  "unlockRequires": ["06-inheritance"]
+}

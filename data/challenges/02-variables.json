@@ -1,0 +1,68 @@
+{
+  "id": "02-variables",
+  "level": 1,
+  "title": "Variable Types",
+  "category": "java",
+  "categoryLabel": "Java",
+  "points": 100,
+  "description": "Java is a strongly-typed language. Each variable must be declared with its type.\n\nFix the variable declarations so the code compiles. The program should print the person's info.",
+  "objectives": [
+    "Declare variables with correct types",
+    "Use proper type for each value"
+  ],
+  "hints": [
+    "Strings use 'String', whole numbers use 'int', decimals use 'double', true/false use 'boolean'.",
+    "String literals need double quotes, char uses single quotes."
+  ],
+  "hintPenalty": 15,
+  "validationType": "java-output",
+  "files": [
+    {
+      "filename": "Variables.java",
+      "language": "java",
+      "editable": true,
+      "content": "public class Variables {\n  public static void main(String[] args) {\n    name = \"Alice\";\n    age = 25;\n    height = 5.6;\n    isStudent = true;\n    \n    System.out.println(\"Name: \" + name);\n    System.out.println(\"Age: \" + age);\n    System.out.println(\"Height: \" + height);\n    System.out.println(\"Student: \" + isStudent);\n  }\n}"
+    }
+  ],
+  "validation": {
+    "checks": [
+      {
+        "description": "String type for name",
+        "astRule": {
+          "type": "contains-string",
+          "value": "String name"
+        },
+        "failMessage": "Declare name with String type.",
+        "points": 25
+      },
+      {
+        "description": "int type for age",
+        "astRule": {
+          "type": "contains-string",
+          "value": "int age"
+        },
+        "failMessage": "Declare age with int type.",
+        "points": 25
+      },
+      {
+        "description": "double type for height",
+        "astRule": {
+          "type": "contains-string",
+          "value": "double height"
+        },
+        "failMessage": "Declare height with double type.",
+        "points": 25
+      },
+      {
+        "description": "boolean type for isStudent",
+        "astRule": {
+          "type": "contains-string",
+          "value": "boolean isStudent"
+        },
+        "failMessage": "Declare isStudent with boolean type.",
+        "points": 25
+      }
+    ]
+  },
+  "unlockRequires": ["01-hello-world"]
+}

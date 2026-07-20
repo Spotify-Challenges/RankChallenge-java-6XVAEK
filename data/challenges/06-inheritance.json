@@ -1,0 +1,60 @@
+{
+  "id": "06-inheritance",
+  "level": 3,
+  "title": "Inheritance",
+  "category": "java",
+  "categoryLabel": "Java",
+  "points": 200,
+  "description": "Inheritance allows a class to inherit fields and methods from another class.\n\nFix the Dog class to properly extend Animal and override the speak() method.",
+  "objectives": [
+    "Use 'extends' keyword for inheritance",
+    "Call parent constructor with 'super'",
+    "Override the speak method with @Override annotation"
+  ],
+  "hints": [
+    "Use 'class Dog extends Animal' to inherit.",
+    "Call super(name) in the child constructor to initialize parent fields."
+  ],
+  "hintPenalty": 25,
+  "validationType": "java-output",
+  "files": [
+    {
+      "filename": "Animal.java",
+      "language": "java",
+      "editable": true,
+      "content": "class Animal {\n  protected String name;\n  \n  public Animal(String name) {\n    this.name = name;\n  }\n  \n  public void speak() {\n    System.out.println(name + \" makes a sound\");\n  }\n}\n\nclass Dog implements Animal {\n  public Dog(String name) {\n    name = name;\n  }\n  \n  public void speak() {\n    System.out.println(name + \" says Woof!\");\n  }\n}\n\npublic class Main {\n  public static void main(String[] args) {\n    Animal a = new Animal(\"Generic Animal\");\n    Dog d = new Dog(\"Buddy\");\n    \n    a.speak();\n    d.speak();\n  }\n}"
+    }
+  ],
+  "validation": {
+    "checks": [
+      {
+        "description": "Dog extends Animal",
+        "astRule": {
+          "type": "contains-string",
+          "value": "class Dog extends Animal"
+        },
+        "failMessage": "Use 'extends' not 'implements' for class inheritance.",
+        "points": 35
+      },
+      {
+        "description": "Call super constructor",
+        "astRule": {
+          "type": "contains-string",
+          "value": "super(name)"
+        },
+        "failMessage": "Call super(name) to initialize the parent class.",
+        "points": 35
+      },
+      {
+        "description": "Override annotation",
+        "astRule": {
+          "type": "contains-string",
+          "value": "@Override"
+        },
+        "failMessage": "Add @Override annotation before the speak method in Dog.",
+        "points": 30
+      }
+    ]
+  },
+  "unlockRequires": ["05-classes"]
+}

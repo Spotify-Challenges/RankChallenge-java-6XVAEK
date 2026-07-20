@@ -1,0 +1,69 @@
+{
+  "id": "01-hello-world",
+  "level": 1,
+  "title": "Hello World",
+  "category": "java",
+  "categoryLabel": "Java",
+  "points": 100,
+  "description": "Every Java journey begins with Hello World. This program should print \"Hello, World!\" to the console, but there are syntax errors.\n\nFix the code so it compiles and prints the correct message.",
+  "objectives": [
+    "Fix the class declaration syntax",
+    "Fix the main method signature",
+    "Print \"Hello, World!\" to the console"
+  ],
+  "hints": [
+    "Java class names must match the filename and use proper capitalization.",
+    "The main method signature must be: public static void main(String[] args)"
+  ],
+  "hintPenalty": 15,
+  "validationType": "java-output",
+  "files": [
+    {
+      "filename": "HelloWorld.java",
+      "language": "java",
+      "editable": true,
+      "content": "public clas HelloWorld {\n  public static void main(String args) {\n    System.out.println(\"Hello World\")\n  }\n}"
+    }
+  ],
+  "validation": {
+    "checks": [
+      {
+        "description": "Class keyword is correct",
+        "astRule": {
+          "type": "contains-string",
+          "value": "public class HelloWorld"
+        },
+        "failMessage": "Use 'class' not 'clas'.",
+        "points": 25
+      },
+      {
+        "description": "Main method has correct signature",
+        "astRule": {
+          "type": "contains-string",
+          "value": "String[] args"
+        },
+        "failMessage": "Main method parameter should be String[] args.",
+        "points": 25
+      },
+      {
+        "description": "Print statement has semicolon",
+        "astRule": {
+          "type": "contains-string",
+          "value": "println(\"Hello, World!\");"
+        },
+        "failMessage": "Add semicolon and fix the message to 'Hello, World!'.",
+        "points": 25
+      },
+      {
+        "description": "Correct output message",
+        "astRule": {
+          "type": "contains-string",
+          "value": "Hello, World!"
+        },
+        "failMessage": "Output should be exactly 'Hello, World!' with comma and exclamation.",
+        "points": 25
+      }
+    ]
+  },
+  "unlockRequires": []
+}

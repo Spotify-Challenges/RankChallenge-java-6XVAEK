@@ -1,0 +1,69 @@
+{
+  "id": "08-exceptions",
+  "level": 4,
+  "title": "Exception Handling",
+  "category": "java",
+  "categoryLabel": "Java",
+  "points": 250,
+  "description": "Java uses try-catch blocks to handle exceptions gracefully.\n\nFix the exception handling to catch the right exception types and handle them properly.",
+  "objectives": [
+    "Use try-catch block correctly",
+    "Catch specific exception types",
+    "Use finally block for cleanup"
+  ],
+  "hints": [
+    "Catch more specific exceptions before general ones.",
+    "ArithmeticException for division by zero, NumberFormatException for parsing errors."
+  ],
+  "hintPenalty": 30,
+  "validationType": "java-output",
+  "files": [
+    {
+      "filename": "Exceptions.java",
+      "language": "java",
+      "editable": true,
+      "content": "public class Exceptions {\n  public static void main(String[] args) {\n    try\n      int result = 10 / 0;\n      System.out.println(result);\n    catch (Exception e)\n      System.out.println(\"Error: \" + e.getMessage());\n    }\n    \n    try {\n      int num = Integer.parseInt(\"abc\");\n    } catch (Exception e) {\n      System.out.println(\"Parse error\");\n    }\n    \n    System.out.println(\"Program continues...\");\n  }\n}"
+    }
+  ],
+  "validation": {
+    "checks": [
+      {
+        "description": "Try block has braces",
+        "astRule": {
+          "type": "contains-string",
+          "value": "try {"
+        },
+        "failMessage": "Try block needs opening brace.",
+        "points": 25
+      },
+      {
+        "description": "Catch block has braces",
+        "astRule": {
+          "type": "contains-string",
+          "value": "catch (ArithmeticException"
+        },
+        "failMessage": "Catch ArithmeticException specifically for division by zero.",
+        "points": 25
+      },
+      {
+        "description": "Catch NumberFormatException",
+        "astRule": {
+          "type": "contains-string",
+          "value": "NumberFormatException"
+        },
+        "failMessage": "Catch NumberFormatException for parseInt errors.",
+        "points": 25
+      },
+      {
+        "description": "Finally block present",
+        "astRule": {
+          "type": "contains-string",
+          "value": "finally {"
+        },
+        "failMessage": "Add a finally block for cleanup code.",
+        "points": 25
+      }
+    ]
+  },
+  "unlockRequires": ["07-interfaces"]
+}

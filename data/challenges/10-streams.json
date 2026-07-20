@@ -1,0 +1,69 @@
+{
+  "id": "10-streams",
+  "level": 5,
+  "title": "Streams and Lambdas",
+  "category": "java",
+  "categoryLabel": "Java",
+  "points": 300,
+  "description": "Java 8 introduced Streams and Lambda expressions for functional programming.\n\nFix the code to filter, map, and collect using streams properly.",
+  "objectives": [
+    "Convert collection to stream with .stream()",
+    "Use lambda expressions: x -> x * 2",
+    "Collect results with Collectors.toList()"
+  ],
+  "hints": [
+    "Lambda syntax: (parameter) -> expression or (parameter) -> { statements }",
+    "Chain stream operations: .stream().filter().map().collect()"
+  ],
+  "hintPenalty": 40,
+  "validationType": "java-output",
+  "files": [
+    {
+      "filename": "Streams.java",
+      "language": "java",
+      "editable": true,
+      "content": "import java.util.Arrays;\nimport java.util.List;\nimport java.util.stream.Collectors;\n\npublic class Streams {\n  public static void main(String[] args) {\n    List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);\n    \n    // Filter even numbers and double them\n    List<Integer> result = numbers\n      .filter(function(n) { return n % 2 == 0; })\n      .map(function(n) { return n * 2; })\n      .toList();\n    \n    System.out.println(\"Even numbers doubled: \" + result);\n    \n    // Sum all numbers\n    int sum = numbers\n      .reduce(0, function(a, b) { return a + b; });\n    \n    System.out.println(\"Sum: \" + sum);\n  }\n}"
+    }
+  ],
+  "validation": {
+    "checks": [
+      {
+        "description": "Use .stream() to start",
+        "astRule": {
+          "type": "contains-string",
+          "value": "numbers.stream()"
+        },
+        "failMessage": "Call .stream() on the collection first.",
+        "points": 25
+      },
+      {
+        "description": "Use lambda for filter",
+        "astRule": {
+          "type": "contains-string",
+          "value": "filter(n -> n % 2 == 0)"
+        },
+        "failMessage": "Use lambda syntax: n -> n % 2 == 0",
+        "points": 25
+      },
+      {
+        "description": "Use lambda for map",
+        "astRule": {
+          "type": "contains-string",
+          "value": "map(n -> n * 2)"
+        },
+        "failMessage": "Use lambda syntax: n -> n * 2",
+        "points": 25
+      },
+      {
+        "description": "Use collect with Collectors",
+        "astRule": {
+          "type": "contains-string",
+          "value": "collect(Collectors.toList())"
+        },
+        "failMessage": "Use .collect(Collectors.toList()) to get result.",
+        "points": 25
+      }
+    ]
+  },
+  "unlockRequires": ["09-collections"]
+}

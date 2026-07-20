@@ -1,0 +1,60 @@
+{
+  "id": "04-methods",
+  "level": 2,
+  "title": "Methods and Return Types",
+  "category": "java",
+  "categoryLabel": "Java",
+  "points": 150,
+  "description": "Methods in Java must declare their return type. A method that returns nothing uses 'void', otherwise specify the type.\n\nFix the method signatures and return statements.",
+  "objectives": [
+    "Add correct return types to methods",
+    "Ensure return statements match the declared type",
+    "Fix method calls"
+  ],
+  "hints": [
+    "A method returning an int needs 'public static int methodName()'.",
+    "Methods with no return value use 'void' and don't need a return statement."
+  ],
+  "hintPenalty": 20,
+  "validationType": "java-output",
+  "files": [
+    {
+      "filename": "Methods.java",
+      "language": "java",
+      "editable": true,
+      "content": "public class Methods {\n  public static void main(String[] args) {\n    int result = add(5, 3);\n    System.out.println(\"5 + 3 = \" + result);\n    \n    greet(\"Java\");\n    \n    boolean check = isEven(4);\n    System.out.println(\"4 is even: \" + check);\n  }\n  \n  public static add(int a, int b) {\n    return a + b;\n  }\n  \n  public static greet(String name) {\n    System.out.println(\"Hello, \" + name + \"!\");\n  }\n  \n  public static isEven(int num) {\n    return num % 2 == 0;\n  }\n}"
+    }
+  ],
+  "validation": {
+    "checks": [
+      {
+        "description": "add() returns int",
+        "astRule": {
+          "type": "contains-string",
+          "value": "public static int add"
+        },
+        "failMessage": "The add method should return int.",
+        "points": 34
+      },
+      {
+        "description": "greet() returns void",
+        "astRule": {
+          "type": "contains-string",
+          "value": "public static void greet"
+        },
+        "failMessage": "The greet method should return void.",
+        "points": 33
+      },
+      {
+        "description": "isEven() returns boolean",
+        "astRule": {
+          "type": "contains-string",
+          "value": "public static boolean isEven"
+        },
+        "failMessage": "The isEven method should return boolean.",
+        "points": 33
+      }
+    ]
+  },
+  "unlockRequires": ["03-arrays"]
+}
